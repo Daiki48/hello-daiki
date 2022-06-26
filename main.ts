@@ -14,6 +14,6 @@ export async function main(denops: Denops): Promise<void>{
 
   const n = denops.name;
   await denops.cmd(
-    `command! DenopsHello call denops#notify("${n}", "world", [denops#request("${n}", "hello",[])])`,
+    `command! DenopsDaiki call denops#notify("${n}", "world", [denops#request("${n}", "hello",[])])`,
   );
 }
