@@ -1,0 +1,19 @@
+import { Denops } from "https://deno.land/x/denops_std@2.0.0/mod.ts";
+
+export async function main(denops: Denops): Promise<void>{
+  denops.dispatcher = {
+    hello(){
+      return Promise.resolve("hello-daiki");
+    },
+    async world(text: unknown){
+      await denops.cmd("echomsg text", {
+        text,
+      });
+    },
+  };
+
+  const n = denops.name;
+  await denops.cmd(
+    `command! DenopsHello call denops#notify("${n}", "world", [denops#request("${n}", "hello",[])])`,
+  );
+}
